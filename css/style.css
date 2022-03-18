@@ -12,7 +12,7 @@
 
 .container{
     width: 80%;
-    margin: 22% auto;
+    margin: 10% auto;
     display: flex;
     justify-content: center;
     row-gap: 60px;

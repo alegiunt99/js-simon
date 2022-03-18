@@ -5,15 +5,16 @@ Da lì parte un timer di 30 secondi.
 Dopo 30 secondi l'utente deve inserire i numeri che ha visto precedentemente, tramite il prompt().
 Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei numeri da indovinare sono stati individuati. */
 
+// prendo il container dei numeri
+
+const container = document.querySelector('.container');
+
 // prendo i div che comunica il risultato
 
-const youWin = document.getElementById('you-win');
+const scoreCounter = document.querySelector('.result-message');
 
-const youLose = document.getElementById('you-lose');
+scoreCounter.style.display = 'none';
 
-youWin.style.display = 'none';
-
-youLose.style.display = 'none';
 
 // prendo tutti i div contenenti i numeri
 const numberOne = document.getElementById('number-1');
@@ -26,9 +27,12 @@ const numberFour = document.getElementById('number-4');
 
 const numberFive = document.getElementById('number-5');
 
-const numbersDivs = document.querySelectorAll('.number');
+const numbersDivsCell = document.querySelectorAll('.number');
 
 
+
+
+console.log(numbersDivsCell);
 // elementi contenuti nell'array
 const arraysLength = 5;
 
@@ -73,9 +77,7 @@ numberFive.innerText = numbersArray[4];
 
 const noShowNumbers = setInterval(function () {
 
-    const container = document.querySelector('.container');
-
-    container.style.display = 'none';
+container.style.display = 'none';
 
     
 
@@ -83,28 +85,50 @@ const noShowNumbers = setInterval(function () {
 }, 30000)
 
 
-console.log(noShowNumbers)
-
 // creo un propt che permetta all'utente di inserire i numeri e ricordarli
 
 const showPrompt = setInterval(() => {
     for (let n = 0; n < 5; n++){
         
+        let punteggio = 0;
+
         // creo 5 prompt che siano numeri
         let numbersCreated = onlyNumberPrompt('Inserisci un numero');
 
         let numberPosition = numbersArray[n];
 
+        let numbersDivs = numbersDivsCell[n];
+
+        console.log(numbersDivs);
+
+        numbersDivs.display = 'block';
+
         if (numbersCreated !== numberPosition) {
             
-            console.log('you lose');
+            punteggio = 0
+
+            console.log('sbagliato');
 
             clearInterval(showPrompt);
+
+            scoreCounter.style.display = 'block';
+
+            container.style.display = 'flex';
+
         } else {
-            console.log('you win');
 
+            punteggio++
+            
+            console.log('giusto');
             clearInterval(showPrompt);
-        }
 
+            scoreCounter.innerText = 'SCORE:' + '' + punteggio;
+
+            scoreCounter.style.display = 'block';
+
+            container.style.display = 'flex';
+        }
     }
+    clearInterval(noShowNumbers);
 }, 30500);
+
