@@ -9,7 +9,7 @@ Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei num
 
 const container = document.querySelector('.container');
 
-// prendo i div che comunica il risultato
+// prendo i div che comunica il punteggio
 
 const scoreCounter = document.querySelector('.result-message');
 
@@ -27,12 +27,7 @@ const numberFour = document.getElementById('number-4');
 
 const numberFive = document.getElementById('number-5');
 
-const numbersDivsCell = document.querySelectorAll('.number');
 
-
-
-
-console.log(numbersDivsCell);
 // elementi contenuti nell'array
 const arraysLength = 5;
 
@@ -40,7 +35,7 @@ const arraysLength = 5;
 const numbersArray = [];
 
 
-
+//finchè il numero di elementi nell'array sarà minore di 5
 while (numbersArray.length < arraysLength) {
 
     //creo i numeri casuali
@@ -80,56 +75,62 @@ const noShowNumbers = setInterval(function () {
 container.style.display = 'none';
 
     
-
-    
-}, 3000)
+}, 30000)
 
 
-// creo un propt che permetta all'utente di inserire i numeri e ricordarli
+// creo un propt subito dopo la scomparsa dei numeri
 
+// dichiaro il punteggio a 0
 let punteggio = 0;
 
+// creo l'intervallo
 const showPrompt = setInterval(() => {
-    for (let n = 0; n < 5; n++){
-        
-        
 
-        // creo 5 prompt che siano numeri
+    // creo un ciclo che per 5 volte...
+    for (let n = 0; n < 5; n++){
+
+        // ...crea 1 prompt che siano numeri
         let numbersCreated = onlyNumberPrompt('Inserisci un numero');
 
+        // dichiaro il valore dei numeri all'interno dell'array
         let numberPosition = numbersArray[n];
 
-        let numbersDivs = numbersDivsCell[n];
-
-        console.log(numbersDivs);
-
-        numbersDivs.display = 'block';
-
-        if (numbersCreated === numberPosition) {
+        // creo un ciclo
+        if (numbersCreated === numberPosition) {  // se il numero generato è uguale al numero all'interno dell'array
             
-            console.log('giusto');
-
+            // il punteggio si incrementa
             punteggio++
             
             console.log(punteggio);
 
+            //chiudo il timing del prompt
             clearInterval(showPrompt);
 
+            // aggiungo del testo al div del punteggio
             scoreCounter.innerText = 'SCORE:' + ' ' + punteggio;
 
+            // lo rendo visibile 
             scoreCounter.style.display = 'block';
 
+            //infine mostro di nuovo i numeri
             container.style.display = 'flex';
 
-        } else {
+        } else (numbersCreated != numberPosition); {                                   // altrimenti, se il numero aggiunto NON è all'interno dell'array
 
             console.log('sbagliato');
             
+            // chiudo il timing del prompt
             clearInterval(showPrompt);
             
+            // rendo il div del punteggio visibile
             scoreCounter.style.display = 'block';
             
+            // aggiungo del testo al div del punteggio
+            scoreCounter.innerText = 'SCORE:' + ' ' + punteggio;
+
+            // mostro di nuovo i numeri
             container.style.display = 'flex';
+
             
         }
 
@@ -137,7 +138,9 @@ const showPrompt = setInterval(() => {
 
         
     }
+    // e alla fine del ciclo, 
+    //dopo aver inserito tutti i numeri col prompt, finisco il timing dei numeri e li rendo di nuovo visibili
     clearInterval(noShowNumbers);
-}, 3500);
+}, 30500);
 
 
