@@ -48,3 +48,12 @@ console.log(numbersArray);
 
 // una volta che genero tutti i numeri, li aggiungo ai div come testo
 
+numberOne.innerText = numbersArray[0];
+
+numberTwo.innerText = numbersArray[1];
+
+numberThree.innerText = numbersArray[2];
+
+numberFour.innerText = numbersArray[3];
+
+numberFive.innerText = numbersArray[4];
