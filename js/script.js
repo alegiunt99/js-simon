@@ -114,7 +114,7 @@ const showPrompt = setInterval(() => {
             // aggiungo del testo al div del punteggio
             scoreCounter.innerText = 'SCORE:' + ' ' + punteggio;
 
-            ceckedNumbers.innerText = 'NUMERI RICORDATI:' + ' ' + (numberPosition++);
+            ceckedNumbers.innerText = 'NUMERI RICORDATI:' + ' ' + numberPosition;
 
             // lo rendo visibile 
             scoreCounter.style.display = 'block';
