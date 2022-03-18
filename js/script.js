@@ -57,3 +57,15 @@ numberThree.innerText = numbersArray[2];
 numberFour.innerText = numbersArray[3];
 
 numberFive.innerText = numbersArray[4];
+
+// creiamo un timing che faccia scomparire i numeri dopo 30 secondi
+
+const noShowNumbers = setInterval(function () {
+
+    const container = document.querySelector('.container');
+
+    container.style.display = 'none';
+    
+}, 30000)
+
+
