@@ -82,15 +82,17 @@ container.style.display = 'none';
     
 
     
-}, 30000)
+}, 3000)
 
 
 // creo un propt che permetta all'utente di inserire i numeri e ricordarli
 
+let punteggio = 0;
+
 const showPrompt = setInterval(() => {
     for (let n = 0; n < 5; n++){
         
-        let punteggio = 0;
+        
 
         // creo 5 prompt che siano numeri
         let numbersCreated = onlyNumberPrompt('Inserisci un numero');
@@ -103,13 +105,17 @@ const showPrompt = setInterval(() => {
 
         numbersDivs.display = 'block';
 
-        if (numbersCreated !== numberPosition) {
+        if (numbersCreated === numberPosition) {
             
-            punteggio = 0
+            console.log('giusto');
 
-            console.log('sbagliato');
+            punteggio++
+            
+            console.log(punteggio);
 
             clearInterval(showPrompt);
+
+            scoreCounter.innerText = 'SCORE:' + ' ' + punteggio;
 
             scoreCounter.style.display = 'block';
 
@@ -117,18 +123,21 @@ const showPrompt = setInterval(() => {
 
         } else {
 
-            punteggio++
+            console.log('sbagliato');
             
-            console.log('giusto');
             clearInterval(showPrompt);
-
-            scoreCounter.innerText = 'SCORE:' + '' + punteggio;
-
+            
             scoreCounter.style.display = 'block';
-
+            
             container.style.display = 'flex';
+            
         }
+
+        
+
+        
     }
     clearInterval(noShowNumbers);
-}, 30500);
+}, 3500);
+
 
