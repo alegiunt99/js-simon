@@ -6,3 +6,14 @@ function generateRandomNumber(min, max){
     return Math.floor(Math.random()*range) + min;
 
 }
+
+
+function onlyNumberPrompt(message) {
+
+    let numbersAdded = parseInt(prompt(message));
+
+    if (!isNaN(numbersAdded)) {
+        
+        return numbersAdded;
+    }
+}

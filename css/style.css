@@ -12,11 +12,17 @@
 
 .container{
     width: 80%;
-    margin: 25% auto;
+    margin: 22% auto;
     display: flex;
     justify-content: center;
     row-gap: 60px;
     flex-wrap: wrap;
+}
+
+.title,
+.result-message{
+    text-align: center;
+    margin: 20px auto;
 }
 
 .number{

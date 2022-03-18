@@ -5,6 +5,17 @@ Da lì parte un timer di 30 secondi.
 Dopo 30 secondi l'utente deve inserire i numeri che ha visto precedentemente, tramite il prompt().
 Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei numeri da indovinare sono stati individuati. */
 
+// prendo i div che comunica il risultato
+
+const youWin = document.getElementById('you-win');
+
+const youLose = document.getElementById('you-lose');
+
+youWin.style.display = 'none';
+
+youLose.style.display = 'none';
+
+// prendo tutti i div contenenti i numeri
 const numberOne = document.getElementById('number-1');
 
 const numberTwo = document.getElementById('number-2');
@@ -65,7 +76,35 @@ const noShowNumbers = setInterval(function () {
     const container = document.querySelector('.container');
 
     container.style.display = 'none';
+
+    
+
     
 }, 30000)
 
 
+console.log(noShowNumbers)
+
+// creo un propt che permetta all'utente di inserire i numeri e ricordarli
+
+const showPrompt = setInterval(() => {
+    for (let n = 0; n < 5; n++){
+        
+        // creo 5 prompt che siano numeri
+        let numbersCreated = onlyNumberPrompt('Inserisci un numero');
+
+        let numberPosition = numbersArray[n];
+
+        if (numbersCreated !== numberPosition) {
+            
+            console.log('you lose');
+
+            clearInterval(showPrompt);
+        } else {
+            console.log('you win');
+
+            clearInterval(showPrompt);
+        }
+
+    }
+}, 30500);
