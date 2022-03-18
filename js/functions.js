@@ -14,9 +14,9 @@ function onlyNumberPrompt(message) {
 
     while (isNaN(numbersAdded)) {
         
-        numbersAdded = parseInt(prompt(message));
+        
+        return parseInt(prompt('non hai inserito un numero'));
 
-        return console.log('non hai inserito un numero');
     
     }
 

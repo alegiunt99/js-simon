@@ -15,6 +15,11 @@ const scoreCounter = document.querySelector('.result-message');
 
 scoreCounter.style.display = 'none';
 
+// numeri indovinati
+
+const ceckedNumbers = document.querySelector('.number-cecked');
+
+ceckedNumbers.style.display = 'none';
 
 // prendo tutti i div contenenti i numeri
 const numberOne = document.getElementById('number-1');
@@ -109,13 +114,17 @@ const showPrompt = setInterval(() => {
             // aggiungo del testo al div del punteggio
             scoreCounter.innerText = 'SCORE:' + ' ' + punteggio;
 
+            ceckedNumbers.innerText = 'NUMERI RICORDATI:' + ' ' + (numberPosition++);
+
             // lo rendo visibile 
             scoreCounter.style.display = 'block';
+
+            ceckedNumbers.style.display = 'block';
 
             //infine mostro di nuovo i numeri
             container.style.display = 'flex';
 
-        } else (numbersCreated != numberPosition); {                                   // altrimenti, se il numero aggiunto NON è all'interno dell'array
+        } else {                                   // altrimenti, se il numero aggiunto NON è all'interno dell'array
 
             console.log('sbagliato');
             
