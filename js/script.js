@@ -80,7 +80,7 @@ const noShowNumbers = setInterval(function () {
 container.style.display = 'none';
 
     
-}, 30000)
+}, 2000)
 
 
 // creo un propt subito dopo la scomparsa dei numeri
@@ -114,7 +114,7 @@ const showPrompt = setInterval(() => {
             // aggiungo del testo al div del punteggio
             scoreCounter.innerText = 'SCORE:' + ' ' + punteggio;
 
-            ceckedNumbers.innerText = 'NUMERI RICORDATI:' + ' ' + numberPosition;
+            ceckedNumbers.append(' ' + numberPosition); 
 
             // lo rendo visibile 
             scoreCounter.style.display = 'block';
@@ -150,6 +150,6 @@ const showPrompt = setInterval(() => {
     // e alla fine del ciclo, 
     //dopo aver inserito tutti i numeri col prompt, finisco il timing dei numeri e li rendo di nuovo visibili
     clearInterval(noShowNumbers);
-}, 30500);
+}, 2500);
 
 
